@@ -28,7 +28,7 @@ public class Builder {
         if (this.endTimestamp == null) {
             // first bar
             this.init(quote);
-        } else if (DateUtils.getMinuteDifference(this.endTimestamp, quote.getTimestamp()) >= this.timeFrame) {
+        } else if (DateUtils.getMinuteDifference(this.startTimestamp, quote.getTimestamp()) >= this.timeFrame) {
             // bar completed
             this.logger.debug("Building bar for {}...", quote.getSymbol());
             bar = this.buildBar();
