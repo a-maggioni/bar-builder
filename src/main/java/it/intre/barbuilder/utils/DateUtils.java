@@ -15,7 +15,9 @@ public class DateUtils {
     }
 
     public static int getMinuteDifference(final Long firstTimestamp, final Long secondTimestamp) {
-        return toZonedDateTime(secondTimestamp).getMinute() - toZonedDateTime(firstTimestamp).getMinute();
+        ZonedDateTime firstDateTime = toZonedDateTime(firstTimestamp);
+        ZonedDateTime secondDateTime = toZonedDateTime(secondTimestamp);
+        return (secondDateTime.getHour() - firstDateTime.getHour()) * 60 + (secondDateTime.getMinute() - firstDateTime.getMinute());
     }
 
     public static ZonedDateTime toZonedDateTime(final Long timestamp) {
